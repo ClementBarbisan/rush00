@@ -25,7 +25,7 @@ public class attack : MonoBehaviour {
 		if (Vector2.Distance (weaponParent.transform.position, this.transform.position) > 15f) {
 			this.weaponParent.destroyAttack(this);
 		}
-		else
+		else if (GetComponentInChildren<SpriteRenderer>())
 			this.transform.Translate (new Vector2(-Mathf.Cos (direction * Mathf.Deg2Rad) * speed, -Mathf.Sin (direction * Mathf.Deg2Rad) * speed));
 	}
 

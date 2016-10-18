@@ -50,11 +50,25 @@ public class weapon : MonoBehaviour
 		StartCoroutine(coroutine);
 	}
 
+	IEnumerator emitSparkles(attack current)
+	{
+		GameObject.Destroy (current.GetComponentInChildren<SpriteRenderer> ());
+		if (current.GetComponent<ParticleSystem> ()) 
+		{
+			current.GetComponent<ParticleSystem> ().enableEmission = true;
+			current.GetComponent<ParticleSystem> ().Play ();
+			yield return new WaitForSeconds (0.2f);
+		}
+		else
+			yield return null;
+		GameObject.Destroy (current.gameObject);
+	}
+
 	public void destroyAttack(attack current)
 	{
 		if (current) {
 			listAttack.Remove (current);
-			GameObject.Destroy (current.gameObject);
+			StartCoroutine(emitSparkles(current));
 		}
 	}
 
