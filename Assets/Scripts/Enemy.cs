@@ -160,7 +160,8 @@ public class Enemy : MonoBehaviour {
 		this.audioSource.Play ();
 		while (this.audioSource.isPlaying)
 			yield return null;
-		GameObject.Destroy (this.gameObject);
+		GameObject.Destroy (this.GetComponent<CircleCollider2D>());
+		GameObject.Destroy (this.GetComponent<PolygonCollider2D>());
 	}
 	
 	public void death()
@@ -168,11 +169,13 @@ public class Enemy : MonoBehaviour {
 		if (!this.onDeath) {
 			this.onDeath = true;
 			this.player.onShoot -= onPlayerShoot;
-			foreach (SpriteRenderer sprite in this.GetComponentsInChildren<SpriteRenderer>())
-				sprite.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
-			this.gameObject.GetComponentInChildren<weapon>().GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+//			foreach (SpriteRenderer sprite in this.GetComponentsInChildren<SpriteRenderer>())
+//				sprite.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
+//			this.gameObject.GetComponentInChildren<weapon>().GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 			this.tag = "Untagged";
 			Camera.main.GetComponent<cameraHandler>().enemies.Remove(this);
+			this.GetComponent<ParticleSystem>().enableEmission = true;
+			this.GetComponent<ParticleSystem>().Play();
 			StartCoroutine ("playDeath");
 		}
 	}

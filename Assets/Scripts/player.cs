@@ -3,7 +3,7 @@ using System.Collections;
 
 public class player : MonoBehaviour {
 	public float speed = 1.0f; 
-	private Rigidbody2D rb;
+	public Rigidbody2D rb;
 	[HideInInspector]
 	public weapon currentWeapon = null;
 	[HideInInspector]

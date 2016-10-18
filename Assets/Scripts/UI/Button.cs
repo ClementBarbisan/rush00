@@ -25,8 +25,11 @@ public class Button : MonoBehaviour {
 	}
 	public void loadNextLevel()
 	{
-		if (Application.loadedLevel < nbLevel)
+		if (Application.loadedLevel < nbLevel) 
+		{
 			Application.LoadLevel (Application.loadedLevel + 1);
+			Camera.main.GetComponent<cameraHandler>().currentPlayer.rb.isKinematic = false;
+		}
 	}
 
 	public void reloadLevel()
