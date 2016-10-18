@@ -53,7 +53,7 @@ public class weapon : MonoBehaviour
 	IEnumerator emitSparkles(attack current, ContactPoint2D point)
 	{
 		GameObject.Destroy (current.GetComponentInChildren<SpriteRenderer> ());
-		if (current.GetComponent<ParticleSystem> ()) 
+		if (current && current.GetComponent<ParticleSystem> ()) 
 		{
 			current.transform.position = point.point;
 			current.GetComponent<ParticleSystem> ().enableEmission = true;

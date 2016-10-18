@@ -28,7 +28,8 @@ public class Button : MonoBehaviour {
 		if (Application.loadedLevel < nbLevel) 
 		{
 			Application.LoadLevel (Application.loadedLevel + 1);
-			Camera.main.GetComponent<cameraHandler>().currentPlayer.rb.isKinematic = false;
+			if (Camera.main.GetComponent<cameraHandler>().currentPlayer)
+				Camera.main.GetComponent<cameraHandler>().currentPlayer.rb.isKinematic = false;
 		}
 	}
 
