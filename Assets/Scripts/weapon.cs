@@ -62,7 +62,8 @@ public class weapon : MonoBehaviour
 		}
 		else
 			yield return null;
-		GameObject.Destroy (current.gameObject);
+		if (current)
+			GameObject.Destroy (current.gameObject);
 	}
 
 	public void destroyAttack(attack current)

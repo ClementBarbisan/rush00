@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/Button.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/player.cs">
     <Files>
       <File FileName="Assets/Scripts/Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/player.cs" Line="45" Column="24" />
       <File FileName="Assets/Scripts/cameraHandler.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/attack.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/weapon.cs" Line="58" Column="45" />
+      <File FileName="Assets/Scripts/weapon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UI/bullets.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/Button.cs" Line="32" Column="5" />
+      <File FileName="Assets/Scripts/UI/Button.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UI/Panel_color.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

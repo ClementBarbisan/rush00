@@ -16,12 +16,14 @@ public class player : MonoBehaviour {
 	private AudioSource audioSource;
 	[HideInInspector]
 	public bool onDeath = false;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		rb = this.GetComponent<Rigidbody2D> ();
 		this.audioSource = this.GetComponent<AudioSource> ();
 		this.audioSource.clip = deathClip;
+		this.anim = this.GetComponentInChildren<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -38,6 +40,16 @@ public class player : MonoBehaviour {
 				velocity.x -= speed;
 			if (Input.GetKey (KeyCode.D))
 				velocity.x += speed;
+			if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.D))
+			{
+				anim.Play ("legs");
+				anim.SetBool("legs", true);
+			}
+			else
+			{
+				anim.Stop();
+				anim.SetBool("legs", false);
+			}
 			this.transform.rotation = Quaternion.AngleAxis (currentRotation, Vector3.forward);
 			rb.velocity = velocity;
 			if (currentWeapon != null && Input.GetMouseButtonDown (1)) {
