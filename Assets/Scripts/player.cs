@@ -46,7 +46,7 @@ public class player : MonoBehaviour {
 			}
 			if (currentWeapon != null && Input.GetMouseButton (0)) {
 				this.onShoot (this.currentWeapon.currentType);
-				currentWeapon.shoot ();
+				currentWeapon.shoot (true);
 			}
 		}
 	}

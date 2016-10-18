@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour {
 						RaycastHit2D[] hitAll = Physics2D.RaycastAll (this.transform.position, new Vector2 (Mathf.Cos ((direction.z - 90.0f) * Mathf.Deg2Rad), Mathf.Sin ((direction.z - 90.0f) * Mathf.Deg2Rad)));
 						foreach (RaycastHit2D hit in hitAll) {
 							if (hit.collider.tag == "Player" && hit.distance < 5.0f)
-								this.GetComponentInChildren<weapon> ().shoot ();
+								this.GetComponentInChildren<weapon> ().shoot (false);
 							else if (hit.collider.tag == "Wall" || hit.collider.tag == "Door")
 								break;
 						}

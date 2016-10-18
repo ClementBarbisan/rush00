@@ -74,12 +74,13 @@ public class weapon : MonoBehaviour
 		this.destroyAttack (current);
 	}
 
-	public void shoot()
+	public void shoot(bool player)
 	{
 		if (currentTime - lastFire >= rateFire && (maxbullets == 0 || bullets > 0))
 		{
 			lastFire = currentTime;
-			Camera.main.GetComponent<cameraHandler>().cameraShake();
+			if (player)
+				Camera.main.GetComponent<cameraHandler>().cameraShake();
 			listAttack.Add (GameObject.Instantiate(currentAttack));
 			listAttack.Last ().setParent(this);
 			listAttack.Last ().transform.position = this.transform.position;// + new Vector3(-Mathf.Cos ((lastRotation + 90.0f) * Mathf.Deg2Rad) * 0.3f, -Mathf.Sin ((lastRotation + 90.0f) * Mathf.Deg2Rad) * 0.3f, 0.0f);
