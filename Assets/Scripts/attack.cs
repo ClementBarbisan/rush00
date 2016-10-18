@@ -22,7 +22,8 @@ public class attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Vector2.Distance (weaponParent.transform.position, this.transform.position) > 15f) {
+		if (Vector2.Distance (weaponParent.transform.position, this.transform.position) > 15f) 
+		{
 			this.weaponParent.destroyAttack(this);
 		}
 		else if (GetComponentInChildren<SpriteRenderer>())
@@ -44,19 +45,19 @@ public class attack : MonoBehaviour {
 	{
 		if (this.gameObject.layer == 12 && coll.gameObject.tag == "Enemy") {
 			if (this.weaponParent)
-				this.weaponParent.destroyAttack (this);
+				this.weaponParent.destroyAttack (this, coll.contacts);
 			else
 				GameObject.Destroy (this.gameObject);
 			coll.gameObject.GetComponent<Enemy> ().death ();
 		} else if (this.gameObject.layer == 11 && coll.gameObject.tag == "Player") {
 			if (this.weaponParent)
-				this.weaponParent.destroyAttack (this);
+				this.weaponParent.destroyAttack (this, coll.contacts);
 			else
 				GameObject.Destroy (this.gameObject);
 			coll.gameObject.GetComponentInParent<player> ().death ();
 		} else if (coll.gameObject.tag == "Wall" || coll.gameObject.tag == "Door") {
 			if (this.weaponParent)
-				this.weaponParent.destroyAttack (this);
+				this.weaponParent.destroyAttack (this, coll.contacts);
 			else
 				GameObject.Destroy(this.gameObject);
 		}

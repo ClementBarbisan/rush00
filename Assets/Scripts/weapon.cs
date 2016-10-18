@@ -50,11 +50,12 @@ public class weapon : MonoBehaviour
 		StartCoroutine(coroutine);
 	}
 
-	IEnumerator emitSparkles(attack current)
+	IEnumerator emitSparkles(attack current, ContactPoint2D point)
 	{
 		GameObject.Destroy (current.GetComponentInChildren<SpriteRenderer> ());
 		if (current.GetComponent<ParticleSystem> ()) 
 		{
+			current.transform.position = point.point;
 			current.GetComponent<ParticleSystem> ().enableEmission = true;
 			current.GetComponent<ParticleSystem> ().Play ();
 			yield return new WaitForSeconds (0.2f);
@@ -68,7 +69,14 @@ public class weapon : MonoBehaviour
 	{
 		if (current) {
 			listAttack.Remove (current);
-			StartCoroutine(emitSparkles(current));
+		}
+	}
+
+	public void destroyAttack(attack current, ContactPoint2D[] points)
+	{
+		if (current) {
+			listAttack.Remove (current);
+			StartCoroutine(emitSparkles(current, points[0]));
 		}
 	}
 
